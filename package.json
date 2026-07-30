@@ -1,0 +1,48 @@
+{
+  "name": "myappbackend",
+  "version": "1.0.0",
+  "description": "A server side backend for my android native app this majorsbin authentication, security, rateLimiting, password hashing and morenof security things",
+  "keywords": [
+    "ratelimiting",
+    "password",
+    "encryption",
+    "session",
+    "login",
+    "signup",
+    "etc"
+  ],
+  "homepage": "https://github.com/novasec-spec/Apk#readme",
+  "bugs": {
+    "url": "https://github.com/novasec-spec/Apk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novasec-spec/Apk.git"
+  },
+  "license": "MIT",
+  "author": "novasec-spec",
+  "type": "commonJs",
+  "main": "index.js",
+   "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.1",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.11.0",
+    "sql.js": "^1.14.1",
+    "uuid": "^14.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
