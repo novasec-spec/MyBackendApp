@@ -1,7 +1,7 @@
 {
   "name": "myappbackend",
   "version": "1.0.0",
-  "description": "A server side backend for my android native app this majorsbin authentication, security, rateLimiting, password hashing and morenof security things",
+  "description": "A server sidee backend for my android native app this majorsbin authentication, security, rateLimiting, password hashing and morenof security things",
   "keywords": [
     "ratelimiting",
     "password",
