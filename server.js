@@ -11,7 +11,8 @@ const {
 } = require("./database/database");
 const testRoutes =
 require("./routes/test");
-
+const authRoutes =
+require("./routes/auth");
 const app = express();
 
 app.use(helmet());
@@ -27,6 +28,11 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 app.use("/test", testRoutes);
+
+app.use(
+    "/api/auth",
+    authRoutes
+);
 
 app.get("/", (req, res) => {
 
