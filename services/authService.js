@@ -19,8 +19,8 @@ class AuthService {
             data.password;
 
         const existingUser =
-            db.findOne(
-                "SELECT * FROM users WHERE email=? OR username=?",
+             await  db.findOne(
+"SELECT * FROM users WHERE email=$1 OR username=$2",               
                 [email, username]
             );
 
@@ -53,7 +53,7 @@ class AuthService {
 
         };
 
-        db.execute(
+        await db.execute(
 
             `INSERT INTO users
             (
@@ -64,8 +64,7 @@ class AuthService {
                 created_at,
                 updated_at
             )
-            VALUES
-            (?,?,?,?,?,?)`,
+            VALUES ($1,$2,$3,$4,$5,$6)`,
 
             [
 
@@ -96,9 +95,8 @@ class AuthService {
     async login(email, password, req) {
 
         const user =
-            db.findOne(
-
-                "SELECT * FROM users WHERE email=?",
+           await db.findOne(
+                 "SELECT * FROM users WHERE email=$1",
 
                 [email.toLowerCase()]
 
@@ -141,7 +139,7 @@ class AuthService {
                 .update(refreshToken)
                 .digest("hex");
 
-        db.execute(
+       await db.execute(
 
             `INSERT INTO sessions
             (
@@ -153,8 +151,7 @@ class AuthService {
                 created_at,
                 expires_at
             )
-            VALUES
-            (?,?,?,?,?,?,?)`,
+            VALUES ($1,$2,$3,$4,$5,$6,$7)`,
 
             [
 

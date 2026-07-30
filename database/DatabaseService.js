@@ -1,53 +1,34 @@
-const {
-    getDatabase,
-    saveDatabase
-} = require("./database");
+const pool = require("../config/database");
 
 class DatabaseService {
 
-    query(sql, params = []) {
+    async query(sql, params = []) {
 
-        const db = getDatabase();
+        const result = await pool.query(sql, params);
 
-        const stmt = db.prepare(sql);
-
-        stmt.bind(params);
-
-        const rows = [];
-
-        while (stmt.step()) {
-
-            rows.push(stmt.getAsObject());
-
-        }
-
-        stmt.free();
-
-        return rows;
+        return result.rows;
 
     }
 
-    execute(sql, params = []) {
+    async execute(sql, params = []) {
 
-        const db = getDatabase();
-
-        db.run(sql, params);
-
-        saveDatabase();
+        await pool.query(sql, params);
 
     }
 
-    findOne(sql, params = []) {
+    async findOne(sql, params = []) {
 
-        const rows = this.query(sql, params);
+        const result = await pool.query(sql, params);
 
-        return rows.length ? rows[0] : null;
+        return result.rows.length ? result.rows[0] : null;
 
     }
 
-    findAll(sql, params = []) {
+    async findAll(sql, params = []) {
 
-        return this.query(sql, params);
+        const result = await pool.query(sql, params);
+
+        return result.rows;
 
     }
 
