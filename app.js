@@ -19,6 +19,7 @@ const emailRoutes = require('./routes/email'); // Add this line
 const docsRoutes = require('./routes/docs'); // Add this line if you have it
 
 const app = express();
+app.set("trust proxy", 1);
 // Add before any middleware
 const { requestIdMiddleware } = require('./middleware/requestId');
 app.use(requestIdMiddleware);
